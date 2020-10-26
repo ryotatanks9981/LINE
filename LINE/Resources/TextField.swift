@@ -13,6 +13,8 @@ class TextField: UITextField {
         layer.borderWidth = 1
         layer.cornerRadius = 5
         layer.masksToBounds = true
+        autocapitalizationType = .none
+        autocorrectionType = .no
     }
     
     required init?(coder: NSCoder) {

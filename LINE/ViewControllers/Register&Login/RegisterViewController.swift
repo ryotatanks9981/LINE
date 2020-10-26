@@ -1,4 +1,7 @@
 import UIKit
+import FirebaseAuth
+import Firebase
+import PKHUD
 
 class RegisterViewController: ViewController {
     //components
@@ -27,6 +30,7 @@ class RegisterViewController: ViewController {
     private let passwordTF: TextField = {
         let tf = TextField()
         tf.placeholder = "パスワード(6文字以上)"
+        tf.isSecureTextEntry = true
         return tf
     }()
     private let registerButton: UIButton = {
@@ -105,6 +109,14 @@ class RegisterViewController: ViewController {
         present(picker, animated: true)
     }
     
+    private func showRegisterAlert(message: String = "すでに使用されているメールアドレスです") {
+        let alertVC = UIAlertController(title: "登録エラー",
+                                        message: message,
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "了解", style: .default))
+        present(alertVC, animated: true)
+    }
+    
     // objc functions
     @objc private func selectProfileImage() {
         let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -122,7 +134,49 @@ class RegisterViewController: ViewController {
     }
     
     @objc private func register() {
-        dismiss(animated: true)
+        HUD.show(.progress)
+        guard let username = usernameTF.text, !username.isEmpty,
+              let email = emailTF.text, !email.isEmpty,
+              let password = passwordTF.text, !password.isEmpty, password.count >= 6 else {
+            HUD.hide()
+            showRegisterAlert(message: "項目が条件を満たしていません")
+            return
+        }
+        StoreManager.shared.userExists(email: email) { (exists) in
+            if !exists {
+                // ユーザー情報をfirestoreに保存
+                Auth.auth().createUser(withEmail: email, password: password) { (_, err) in
+                    guard err == nil else {
+                        HUD.hide()
+                        return
+                    }
+                    
+                    guard let image = self.profileImageView.image?.pngData() else {return}
+                    let fileName = "\(email)_profile_imaege.png"
+                    StorageManager.shared.uploadImage(uploadData: image, fileName: fileName) { (result) in
+                        switch result {
+                        case .success(let url):
+                            let user = User(doc: [
+                                "username": username,
+                                "createdAt": Timestamp(),
+                                "profileImageUrl": url
+                            ], email: email)
+                            StoreManager.shared.insertUser(user: user)
+                            HUD.hide()
+                            self.dismiss(animated: true)
+                            break
+                        case .failure(let err):
+                            print("error: \(err)")
+                            break
+                        }
+                    }
+                }
+            } else {
+                self.showRegisterAlert()
+                HUD.hide()
+                return
+            }
+        }
     }
 }
 
@@ -133,7 +187,7 @@ extension RegisterViewController: UITextFieldDelegate {
         } else if textField == emailTF {
             passwordTF.becomeFirstResponder()
         } else if textField == passwordTF {
-            print(textField.text!)
+            register()
         }
         return true
     }

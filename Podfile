@@ -13,5 +13,8 @@ target 'LINE' do
   pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
-  pod 'Firebase/Firestore' 
+  pod 'Firebase/Firestore'
+  
+  pod 'MessageKit'
+  pod 'MessageInputBar'
 end

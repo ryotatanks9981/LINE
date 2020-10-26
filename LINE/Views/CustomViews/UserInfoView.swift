@@ -1,6 +1,15 @@
 import UIKit
+import SDWebImage
 
 class UserInfoView: UIView {
+    
+    var user: User? {
+        didSet {
+            guard let url = user?.profileImageUrl else {return}
+            imageView.sd_setImage(with: URL(string: url), completed: nil)
+            usernameLabel.text = user?.username
+        }
+    }
     
     private let imageView: UIImageView = {
         let view = UIImageView()

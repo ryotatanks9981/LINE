@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B2E3DF48-76CC-4277-9FC5-004D6C1E0BFA"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4592CBCC-AFAF-4D0A-A28A-F3C6419FED60"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LINE/Resources/StoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "conversationExists(conversationID:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4592CBCC-AFAF-4D0A-A28A-F3C6419FED60 - 9834eb95b51166f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LINE.StoreManager.conversationExists(conversationID: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "LINE"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryotakarita/Desktop/StoryBoard/LINE/LINE/Resources/StoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "50">
+               </Location>
+               <Location
+                  uuid = "4592CBCC-AFAF-4D0A-A28A-F3C6419FED60 - 5f2bcfe16a3d6e0c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in LINE.StoreManager.conversationExists(conversationID: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "LINE"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryotakarita/Desktop/StoryBoard/LINE/LINE/Resources/StoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -1,4 +1,6 @@
 import UIKit
+import FirebaseAuth
+import PKHUD
 
 class LoginViewController: ViewController {
 
@@ -10,6 +12,7 @@ class LoginViewController: ViewController {
     private let passwordTF: TextField = {
         let tf = TextField()
         tf.placeholder = "パスワード(6文字以上)"
+        tf.isSecureTextEntry = true
         return tf
     }()
     private let loginButton: UIButton = {
@@ -57,10 +60,30 @@ class LoginViewController: ViewController {
     
     // objc functions
     @objc private func login() {
-        dismiss(animated: true)
+        HUD.show(.progress)
+        guard let email = emailTF.text, let password = passwordTF.text else {
+            HUD.hide()
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) { (_, err) in
+            guard err == nil else {
+                HUD.hide()
+                return
+            }
+            HUD.hide()
+            self.dismiss(animated: true)
+        }
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTF {
+            passwordTF.becomeFirstResponder()
+        } else if textField == passwordTF {
+            login()
+        }
+        
+        return true
+    }
 }
