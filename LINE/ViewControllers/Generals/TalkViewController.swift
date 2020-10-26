@@ -7,7 +7,8 @@ class TalkViewController: UIViewController {
     
     private let table: UITableView = {
         let view = UITableView()
-        view.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.id)
+        view.register(TalkTableViewCell.self, forCellReuseIdentifier: TalkTableViewCell.id)
+        view.tableFooterView = UIView()
         return view
     }()
     
@@ -75,9 +76,21 @@ extension TalkViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.id, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TalkTableViewCell.id, for: indexPath) as! TalkTableViewCell
+        cell.conversation = conversations[indexPath.row]
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = ChatViewController()
+        vc.conversation = conversations[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
     
 }

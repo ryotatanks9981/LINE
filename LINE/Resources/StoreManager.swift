@@ -11,6 +11,7 @@ class StoreManager {
         case failedToGetAllConversations
         case failedToCreateNewConversation
         case failedToGetCurrentUserConversations
+        case fail
     }
     
     // Abous Users functions
@@ -86,7 +87,7 @@ class StoreManager {
     
     //自分の会話を全て取得
     public func getAllConversations(email: String, completion: @escaping (Result<[Conversation], Error>) -> Void) {
-        store.collection("conversations").getDocuments { (snapshots, err) in
+        store.collection("conversations").addSnapshotListener { (snapshots, err) in
             guard let docs = snapshots?.documents, err == nil else {
                 completion(.failure(StoreError.failedToGetAllConversations))
                 return
@@ -136,7 +137,7 @@ class StoreManager {
     
     //　自分のトーク履歴だけ取得
     public func getCurrentUserConversations(email: String, completion: @escaping (Result<[Conversation], Error>) -> Void) {
-        store.collection("conversations").getDocuments { (snapshots, error) in
+        store.collection("conversations").addSnapshotListener { (snapshots, error) in
             guard let docs = snapshots?.documents, error == nil else {
                 completion(.failure(StoreError.failedToGetCurrentUserConversations))
                 return
@@ -157,6 +158,55 @@ class StoreManager {
         }
     }
 
+    
+    
+    // About Messages functions
+    // - get fetchMssages
+    // - insertMessage
+    
+    public func fetchAllMessages(conversation: Conversation, completion: @escaping (Result<[Message], Error>) -> Void) {
+        store.collection("conversations").document(conversation.id).collection("messages").addSnapshotListener { (snapshots, error) in
+            guard let docs = snapshots?.documents, error == nil else {
+                completion(.failure(StoreError.fail))
+                return
+            }
+            
+            var messages = [Message]()
+            docs.forEach { (snap) in
+                let data = snap.data()
+                let sender = Sender(senderId: data["sender"] as? String ?? "",
+                                    displayName: data["dispName"] as? String ?? "")
+                let message = Message(sender: sender,
+                                      messageId: snap.documentID,
+                                      sentDate: data["date"] as? Date ?? Date(),
+                                      kind: .text(data["content"] as? String ?? ""))
+                messages.append(message)
+            }
+            
+            completion(.success(messages))
+        }
+    }
+    
+    public func insertMessage(id: String, message: Message, content: String) {
+        let data: [String: Any] = [
+            "sender": message.sender.senderId,
+            "dispName": message.sender.displayName,
+            "date": message.sentDate,
+            "content": content
+        ]
+        store.collection("conversations").document(id).collection("messages").document(message.messageId).setData(data) { (err) in
+            guard err == nil else {return}
+        }
+        
+        // conversationのlatestMessageとupdateを変える
+        let updateData: [String: Any] = [
+            "latestMessage": content,
+            "update": message.sentDate
+        ]
+        store.collection("conversations").document(id).setData(updateData, merge: true) { (err) in
+            guard err == nil else {return}
+        }
+    }
 }
 
 

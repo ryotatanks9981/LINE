@@ -36,6 +36,7 @@
 		55780ACC25459F4C00BA649E /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780ACB25459F4C00BA649E /* Sender.swift */; };
 		55780ACF25459F7800BA649E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780ACE25459F7800BA649E /* Message.swift */; };
 		55780AD22545AF6000BA649E /* Conversaiton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AD12545AF6000BA649E /* Conversaiton.swift */; };
+		55780AD52546ECD400BA649E /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AD42546ECD400BA649E /* TalkTableViewCell.swift */; };
 		6506E15CEA82AFEDFFB76A16 /* Pods_LINE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C495372DD851BBA839C42F /* Pods_LINE.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		55780ACB25459F4C00BA649E /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		55780ACE25459F7800BA649E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		55780AD12545AF6000BA649E /* Conversaiton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversaiton.swift; sourceTree = "<group>"; };
+		55780AD42546ECD400BA649E /* TalkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkTableViewCell.swift; sourceTree = "<group>"; };
 		76D230724751C104671D2B9E /* Pods-LINE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.release.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.release.xcconfig"; sourceTree = "<group>"; };
 		CD82D98732F2C05F28300877 /* Pods-LINE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.debug.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 				55780A5A254314BE00BA649E /* GroupeListView.swift */,
 				55780A5F25431FD600BA649E /* FriendsListView.swift */,
 				55780AA725458CFF00BA649E /* UserTableViewCell.swift */,
+				55780AD42546ECD400BA649E /* TalkTableViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				55780AC925459EBC00BA649E /* ChatViewController.swift in Sources */,
 				55780A4D25428A6F00BA649E /* TLViewController.swift in Sources */,
 				55780A6E2544201900BA649E /* TextField.swift in Sources */,
+				55780AD52546ECD400BA649E /* TalkTableViewCell.swift in Sources */,
 				55780A9625445CCF00BA649E /* StoreManager.swift in Sources */,
 				55780A322542844100BA649E /* ViewController.swift in Sources */,
 				55780A2E2542844100BA649E /* AppDelegate.swift in Sources */,
