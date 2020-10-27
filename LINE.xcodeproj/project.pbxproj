@@ -37,6 +37,10 @@
 		55780ACF25459F7800BA649E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780ACE25459F7800BA649E /* Message.swift */; };
 		55780AD22545AF6000BA649E /* Conversaiton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AD12545AF6000BA649E /* Conversaiton.swift */; };
 		55780AD52546ECD400BA649E /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AD42546ECD400BA649E /* TalkTableViewCell.swift */; };
+		55780AD8254791BF00BA649E /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AD7254791BF00BA649E /* UserDetailViewController.swift */; };
+		55780ADB2547BAFB00BA649E /* StatusMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */; };
+		55780ADE2547BECD00BA649E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780ADD2547BECD00BA649E /* SettingViewController.swift */; };
+		55780AE22548120700BA649E /* Setiing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AE12548120600BA649E /* Setiing.swift */; };
 		6506E15CEA82AFEDFFB76A16 /* Pods_LINE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C495372DD851BBA839C42F /* Pods_LINE.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +78,10 @@
 		55780ACE25459F7800BA649E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		55780AD12545AF6000BA649E /* Conversaiton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversaiton.swift; sourceTree = "<group>"; };
 		55780AD42546ECD400BA649E /* TalkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkTableViewCell.swift; sourceTree = "<group>"; };
+		55780AD7254791BF00BA649E /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageViewController.swift; sourceTree = "<group>"; };
+		55780ADD2547BECD00BA649E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		55780AE12548120600BA649E /* Setiing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setiing.swift; sourceTree = "<group>"; };
 		76D230724751C104671D2B9E /* Pods-LINE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.release.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.release.xcconfig"; sourceTree = "<group>"; };
 		CD82D98732F2C05F28300877 /* Pods-LINE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.debug.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +202,7 @@
 				55780ACB25459F4C00BA649E /* Sender.swift */,
 				55780ACE25459F7800BA649E /* Message.swift */,
 				55780AD12545AF6000BA649E /* Conversaiton.swift */,
+				55780AE12548120600BA649E /* Setiing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +223,9 @@
 			children = (
 				55780AA12545882800BA649E /* AddConversationViewController.swift */,
 				55780AC825459EBC00BA649E /* ChatViewController.swift */,
+				55780AD7254791BF00BA649E /* UserDetailViewController.swift */,
+				55780ADD2547BECD00BA649E /* SettingViewController.swift */,
+				55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -350,6 +362,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55780ADE2547BECD00BA649E /* SettingViewController.swift in Sources */,
+				55780ADB2547BAFB00BA649E /* StatusMessageViewController.swift in Sources */,
 				55780A6B2544039E00BA649E /* LoginViewController.swift in Sources */,
 				55780A57254291F600BA649E /* Extension.swift in Sources */,
 				55780AC925459EBC00BA649E /* ChatViewController.swift in Sources */,
@@ -359,8 +373,10 @@
 				55780A9625445CCF00BA649E /* StoreManager.swift in Sources */,
 				55780A322542844100BA649E /* ViewController.swift in Sources */,
 				55780A2E2542844100BA649E /* AppDelegate.swift in Sources */,
+				55780AE22548120700BA649E /* Setiing.swift in Sources */,
 				55780A5B254314BE00BA649E /* GroupeListView.swift in Sources */,
 				55780A75254430F800BA649E /* BaseTabViewController.swift in Sources */,
+				55780AD8254791BF00BA649E /* UserDetailViewController.swift in Sources */,
 				55780ACC25459F4C00BA649E /* Sender.swift in Sources */,
 				55780A9F25446A4500BA649E /* StorageManager.swift in Sources */,
 				55780AD22545AF6000BA649E /* Conversaiton.swift in Sources */,

@@ -70,8 +70,7 @@ extension AddConversationViewController: UITableViewDelegate, UITableViewDataSou
             if !exists {
                 self.showActionSheet(email: email, user: user)
             } else {
-                let vc = ChatViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.moveToChatVC()
             }
         }
     }
@@ -80,12 +79,27 @@ extension AddConversationViewController: UITableViewDelegate, UITableViewDataSou
         return 70
     }
     
+    private func moveToChatVC() {
+        guard let email = Auth.auth().currentUser?.email else {return}
+        StoreManager.shared.getCurrentUser(with: email) { (re) in
+            switch re {
+            case .success(let user):
+                let sender = Sender(senderId: email, displayName: user.username)
+                let vc = ChatViewController(sender: sender)
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
+    
     private func showActionSheet(email: String, user: User) {
         let actionSheet = UIAlertController(title: user.username, message: nil, preferredStyle: .actionSheet)
         let conversation = UIAlertAction(title: "話す", style: .default) { (_) in
             StoreManager.shared.createNewConversation(email: email, partnerEmail: user.email)
-            let vc = ChatViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.moveToChatVC()
         }
         let cancel = UIAlertAction(title: "キャンセル", style: .cancel)
         actionSheet.addAction(conversation)

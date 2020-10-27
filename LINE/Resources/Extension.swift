@@ -20,4 +20,13 @@ extension UIView {
     public var right: CGFloat {
         return frame.size.width + frame.origin.x
     }
+    
+    public func addBlur(style: UIBlurEffect.Style = .dark) {
+        let blur = UIVisualEffectView()
+        blur.effect = UIBlurEffect(style: style)
+        blur.frame = bounds
+        blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blur.backgroundColor = .clear
+        insertSubview(blur, at: 0)
+    }
 }

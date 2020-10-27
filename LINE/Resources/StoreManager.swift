@@ -108,8 +108,8 @@ class StoreManager {
     
     // 会話が既に存在するかどうか
     public func conversationExists(conversationID: String, completion: @escaping (Bool) -> Void) {
-        store.collection("conversations").document(conversationID).getDocument { (snap, err) in
-            guard snap?.data() != nil, err == nil else {
+        store.collection("conversations").document(conversationID).getDocument { (snapshot, error) in
+            guard snapshot?.data() != nil, error == nil else {
                 completion(false)
                 return
             }
@@ -119,14 +119,17 @@ class StoreManager {
     
     // 新しい会話を作成
     public func createNewConversation(email: String, partnerEmail: String) {
+        var members = [email, partnerEmail]
         let docData: [String: Any] = [
-            "members": [email, partnerEmail],
+            "members": members,
             "update": Timestamp(),
             "latestMessage": "",
         ]
+        members = members.sorted { (fast, slow) -> Bool in
+            return fast < slow
+        }
         
-        
-        let conversationID = "\(email)_\(partnerEmail)"
+        let conversationID = "\(members[0])_\(members[1])"
         
         store.collection("conversations").document(conversationID).setData(docData) { (error) in
             guard error == nil else {
@@ -157,34 +160,37 @@ class StoreManager {
             completion(.success(conversations))
         }
     }
-
-    
     
     // About Messages functions
     // - get fetchMssages
     // - insertMessage
     
     public func fetchAllMessages(conversation: Conversation, completion: @escaping (Result<[Message], Error>) -> Void) {
-        store.collection("conversations").document(conversation.id).collection("messages").addSnapshotListener { (snapshots, error) in
-            guard let docs = snapshots?.documents, error == nil else {
-                completion(.failure(StoreError.fail))
-                return
+        store.collection("conversations").document(conversation.id).collection("messages").order(by: "date")
+            .addSnapshotListener { (snapshots, error) in
+                guard let docs = snapshots?.documents, error == nil else {
+                    completion(.failure(StoreError.fail))
+                    return
+                }
+                
+                
+                
+                
+                var messages = [Message]()
+                
+                docs.forEach { (snap) in
+                    let data = snap.data()
+                    let sender = Sender(senderId: data["sender"] as? String ?? "",
+                                        displayName: data["dispName"] as? String ?? "")
+                    let message = Message(sender: sender,
+                                          messageId: snap.documentID,
+                                          sentDate: data["date"] as? Date ?? Date(),
+                                          kind: .text(data["content"] as? String ?? ""))
+                    messages.append(message)
+                }
+                
+                completion(.success(messages))
             }
-            
-            var messages = [Message]()
-            docs.forEach { (snap) in
-                let data = snap.data()
-                let sender = Sender(senderId: data["sender"] as? String ?? "",
-                                    displayName: data["dispName"] as? String ?? "")
-                let message = Message(sender: sender,
-                                      messageId: snap.documentID,
-                                      sentDate: data["date"] as? Date ?? Date(),
-                                      kind: .text(data["content"] as? String ?? ""))
-                messages.append(message)
-            }
-            
-            completion(.success(messages))
-        }
     }
     
     public func insertMessage(id: String, message: Message, content: String) {

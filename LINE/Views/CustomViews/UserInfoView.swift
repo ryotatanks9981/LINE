@@ -16,6 +16,7 @@ class UserInfoView: UIView {
         view.contentMode = .scaleAspectFill
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.gray.cgColor
+        view.image = UIImage(systemName: "person")
         return view
     }()
     

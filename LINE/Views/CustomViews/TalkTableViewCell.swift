@@ -40,6 +40,7 @@ class TalkTableViewCell: UITableViewCell {
         view.contentMode = .scaleAspectFill
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.gray.cgColor
+        view.image = UIImage(systemName: "person")
         return view
     }()
     
@@ -92,7 +93,7 @@ class TalkTableViewCell: UITableViewCell {
         profileImageView.clipsToBounds = true
         
         usernameLabel.frame = CGRect(x: profileImageView.right+10, y: profileImageView.top+5, width: contentView.width/2, height: 21)
-        latestMessageLabel.frame = CGRect(x: profileImageView.right+10, y: usernameLabel.bottom+2, width: contentView.width/2, height: 14)
+        latestMessageLabel.frame = CGRect(x: profileImageView.right+10, y: usernameLabel.bottom+2, width: contentView.width/2, height: 16)
         dateLabel.frame = CGRect(x: contentView.right-contentView.width/3-10,
                                  y: usernameLabel.bottom+2,
                                  width: contentView.width/3,

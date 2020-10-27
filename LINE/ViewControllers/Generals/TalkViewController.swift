@@ -84,9 +84,19 @@ extension TalkViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = ChatViewController()
-        vc.conversation = conversations[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        guard let email = Auth.auth().currentUser?.email else {return}
+        StoreManager.shared.getCurrentUser(with: email) { (re) in
+            switch re {
+            case .success(let user):
+                let sender = Sender(senderId: email, displayName: user.username)
+                let vc = ChatViewController(sender: sender)
+                vc.conversation = self.conversations[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case .failure(_):
+                break
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

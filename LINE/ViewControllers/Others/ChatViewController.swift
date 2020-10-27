@@ -9,19 +9,34 @@ class ChatViewController: MessagesViewController {
     
     private var messages = [Message]()
     
-    var sender: Sender?
+    var partnerUser: User? {
+        didSet {
+            title = partnerUser?.username
+        }
+    }
+    
+    var sender: Sender
+    
+    init(sender: Sender) {
+        self.sender = sender
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        messagesCollectionView.scrollToBottom()
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
+        messageInputBar.sendButton.setTitle("送信", for: .normal)
         
         createNavBarItems()
-        
-        fetchUser()
         getAllMessages()
         
     }
@@ -32,21 +47,9 @@ class ChatViewController: MessagesViewController {
             switch re {
             case .success(let messages):
                 self.messages = messages
-                self.messagesCollectionView.reloadData()
-                break
-            case .failure(let error):
-                print(error)
-                break
-            }
-        }
-    }
-    
-    private func fetchUser() {
-        guard let email = Auth.auth().currentUser?.email else {return}
-        StoreManager.shared.getCurrentUser(with: email) { (re) in
-            switch re {
-            case .success(let user):
-                self.sender = Sender(senderId: user.email, displayName: user.username)
+                DispatchQueue.main.async {
+                    self.messagesCollectionView.reloadData()
+                }
                 break
             case .failure(let error):
                 print(error)
@@ -74,7 +77,6 @@ class ChatViewController: MessagesViewController {
 
 extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
     func currentSender() -> SenderType {
-        guard let sender = sender else {return Sender(senderId: "", displayName: "")}
         return sender
     }
     
@@ -90,7 +92,6 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
 extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let uuid = UUID().uuidString
-        guard let sender = sender else {return}
         let message = Message(sender: sender, messageId: uuid, sentDate: Timestamp().dateValue(), kind: .text(text))
         messages.append(message)
         messagesCollectionView.reloadData()

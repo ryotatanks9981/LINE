@@ -16,8 +16,6 @@ class HomeViewController: UIViewController {
 
         createNavBarItems()
         
-        showLoginAndRegister()
-        
         // add sub views
         view.addSubview(scrollView)
         scrollView.addSubview(userInfoView)
@@ -25,7 +23,15 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(friendView)
         
         userInfoView.backgroundColor = view.backgroundColor
+        userInfoView.isUserInteractionEnabled = true
+        userInfoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showUserDetail)))
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        showLoginAndRegister(animated: false)
         fetchMyInfo()
     }
     
@@ -54,12 +60,12 @@ class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItem = rightButton
     }
     
-    private func showLoginAndRegister() {
+    func showLoginAndRegister(animated: Bool) {
         if Auth.auth().currentUser == nil {
             let vc = RegisterAndLoginViewController()
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: false)
+            present(nav, animated: animated)
         }
     }
     
@@ -80,11 +86,22 @@ class HomeViewController: UIViewController {
     
     // objc functions
     @objc private func didTapLeftButton() {
-        print("didTapLeftButton")
+        let vc = SettingViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
     @objc private func didTapRightButton() {
         let vc = AddConversationViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func showUserDetail() {
+        let vc = UserDetailViewController()
+        vc.user = userInfoView.user
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
 }
