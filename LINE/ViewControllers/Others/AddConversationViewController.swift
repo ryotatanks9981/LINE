@@ -1,5 +1,5 @@
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class AddConversationViewController: ViewController {
     
@@ -70,7 +70,9 @@ extension AddConversationViewController: UITableViewDelegate, UITableViewDataSou
             if !exists {
                 self.showActionSheet(email: email, user: user)
             } else {
-                self.moveToChatVC()
+                let conversationID = UserDefaults.standard.value(forKey: "conversationID") as? String ?? ""
+                print(conversationID)
+                self.moveToChatVC(id: conversationID, email: email, partnerEmail: user.email)
             }
         }
     }
@@ -79,13 +81,20 @@ extension AddConversationViewController: UITableViewDelegate, UITableViewDataSou
         return 70
     }
     
-    private func moveToChatVC() {
-        guard let email = Auth.auth().currentUser?.email else {return}
+    private func moveToChatVC(id: String, email: String, partnerEmail: String) {
         StoreManager.shared.getCurrentUser(with: email) { (re) in
             switch re {
             case .success(let user):
                 let sender = Sender(senderId: email, displayName: user.username)
                 let vc = ChatViewController(sender: sender)
+                let conversationID = UserDefaults.standard.value(forKey: "conversationID") as? String ?? ""
+                let members = [email, user.email]
+                let doc: [String: Any] = [
+                    "members": members,
+                    "latestMessage": "",
+                    "update": Timestamp(),
+                ]
+                vc.conversation = Conversation(doc: doc, id: conversationID)
                 
                 self.navigationController?.pushViewController(vc, animated: true)
                 break
@@ -99,7 +108,8 @@ extension AddConversationViewController: UITableViewDelegate, UITableViewDataSou
         let actionSheet = UIAlertController(title: user.username, message: nil, preferredStyle: .actionSheet)
         let conversation = UIAlertAction(title: "話す", style: .default) { (_) in
             StoreManager.shared.createNewConversation(email: email, partnerEmail: user.email)
-            self.moveToChatVC()
+            let conversationID = UserDefaults.standard.value(forKey: "conversationID") as? String ?? ""
+            self.moveToChatVC(id: conversationID, email: email, partnerEmail: user.email)
         }
         let cancel = UIAlertAction(title: "キャンセル", style: .cancel)
         actionSheet.addAction(conversation)

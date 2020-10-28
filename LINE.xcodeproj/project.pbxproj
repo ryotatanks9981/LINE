@@ -41,6 +41,10 @@
 		55780ADB2547BAFB00BA649E /* StatusMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */; };
 		55780ADE2547BECD00BA649E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780ADD2547BECD00BA649E /* SettingViewController.swift */; };
 		55780AE22548120700BA649E /* Setiing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AE12548120600BA649E /* Setiing.swift */; };
+		55780AE925485A8800BA649E /* TLTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AE825485A8800BA649E /* TLTableViewCell.swift */; };
+		55780AEC25485B5900BA649E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AEB25485B5900BA649E /* TextView.swift */; };
+		55780AEF2549667100BA649E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AEE2549667100BA649E /* Post.swift */; };
+		55780AF225496C1B00BA649E /* AddTLPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AF125496C1B00BA649E /* AddTLPostViewController.swift */; };
 		6506E15CEA82AFEDFFB76A16 /* Pods_LINE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C495372DD851BBA839C42F /* Pods_LINE.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +86,10 @@
 		55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageViewController.swift; sourceTree = "<group>"; };
 		55780ADD2547BECD00BA649E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		55780AE12548120600BA649E /* Setiing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setiing.swift; sourceTree = "<group>"; };
+		55780AE825485A8800BA649E /* TLTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLTableViewCell.swift; sourceTree = "<group>"; };
+		55780AEB25485B5900BA649E /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		55780AEE2549667100BA649E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		55780AF125496C1B00BA649E /* AddTLPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTLPostViewController.swift; sourceTree = "<group>"; };
 		76D230724751C104671D2B9E /* Pods-LINE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.release.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.release.xcconfig"; sourceTree = "<group>"; };
 		CD82D98732F2C05F28300877 /* Pods-LINE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.debug.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +148,7 @@
 				55780A74254430F800BA649E /* BaseTabViewController.swift */,
 				55780A9525445CCF00BA649E /* StoreManager.swift */,
 				55780A9E25446A4500BA649E /* StorageManager.swift */,
+				55780AEB25485B5900BA649E /* TextView.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 				55780A5F25431FD600BA649E /* FriendsListView.swift */,
 				55780AA725458CFF00BA649E /* UserTableViewCell.swift */,
 				55780AD42546ECD400BA649E /* TalkTableViewCell.swift */,
+				55780AE825485A8800BA649E /* TLTableViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -203,6 +213,7 @@
 				55780ACE25459F7800BA649E /* Message.swift */,
 				55780AD12545AF6000BA649E /* Conversaiton.swift */,
 				55780AE12548120600BA649E /* Setiing.swift */,
+				55780AEE2549667100BA649E /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +237,7 @@
 				55780AD7254791BF00BA649E /* UserDetailViewController.swift */,
 				55780ADD2547BECD00BA649E /* SettingViewController.swift */,
 				55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */,
+				55780AF125496C1B00BA649E /* AddTLPostViewController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -371,8 +383,10 @@
 				55780A6E2544201900BA649E /* TextField.swift in Sources */,
 				55780AD52546ECD400BA649E /* TalkTableViewCell.swift in Sources */,
 				55780A9625445CCF00BA649E /* StoreManager.swift in Sources */,
+				55780AEC25485B5900BA649E /* TextView.swift in Sources */,
 				55780A322542844100BA649E /* ViewController.swift in Sources */,
 				55780A2E2542844100BA649E /* AppDelegate.swift in Sources */,
+				55780AEF2549667100BA649E /* Post.swift in Sources */,
 				55780AE22548120700BA649E /* Setiing.swift in Sources */,
 				55780A5B254314BE00BA649E /* GroupeListView.swift in Sources */,
 				55780A75254430F800BA649E /* BaseTabViewController.swift in Sources */,
@@ -388,7 +402,9 @@
 				55780A472542890D00BA649E /* HomeViewController.swift in Sources */,
 				55780AA825458CFF00BA649E /* UserTableViewCell.swift in Sources */,
 				55780A9A2544605800BA649E /* User.swift in Sources */,
+				55780AF225496C1B00BA649E /* AddTLPostViewController.swift in Sources */,
 				55780A682544039800BA649E /* RegisterViewController.swift in Sources */,
+				55780AE925485A8800BA649E /* TLTableViewCell.swift in Sources */,
 				55780ACF25459F7800BA649E /* Message.swift in Sources */,
 				55780A4A25428A5F00BA649E /* TalkViewController.swift in Sources */,
 				55780A652544038400BA649E /* RegisterAndLoginViewController.swift in Sources */,

@@ -130,6 +130,7 @@ class StoreManager {
         }
         
         let conversationID = "\(members[0])_\(members[1])"
+        UserDefaults.standard.set(conversationID, forKey: "conversationID")
         
         store.collection("conversations").document(conversationID).setData(docData) { (error) in
             guard error == nil else {
@@ -211,6 +212,39 @@ class StoreManager {
         ]
         store.collection("conversations").document(id).setData(updateData, merge: true) { (err) in
             guard err == nil else {return}
+        }
+    }
+    
+    // About TimeLine Functions
+    // - getAllPosts
+    // - insertPost
+    
+    public func getAllPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
+        store.collection("posts").order(by: "createdAt", descending: true).addSnapshotListener { (snapshots, error) in
+            guard let documents = snapshots?.documents, error == nil else {
+                completion(.failure(StoreError.fail))
+                return
+            }
+            
+            var posts = [Post]()
+            documents.forEach { (snapshot) in
+                let data = snapshot.data()
+                let post = Post(doc: data)
+                posts.append(post)
+            }
+            completion(.success(posts))
+        }
+    }
+    
+    public func insertPost(post: Post) {
+        let data: [String: Any] = [
+            "owner": post.owner,
+            "content": post.content,
+            "createdAt": post.createdAt,
+        ]
+        
+        store.collection("posts").addDocument(data: data) { (error) in
+            guard error == nil else {return}
         }
     }
 }
