@@ -17,4 +17,8 @@ target 'LINE' do
   
   pod 'MessageKit'
   pod 'MessageInputBar'
+  
+  pod 'UIGradient'
+  
+  pod 'SwiftyJSON'
 end

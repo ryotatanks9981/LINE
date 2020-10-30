@@ -6,9 +6,11 @@ class UserDetailViewController: UIViewController {
     public var user: User? {
         didSet {
             usernameLabel.text = user?.username
+            statusMessageButton.setTitle(user?.statusMessage, for: .normal)
             guard let url = user?.profileImageUrl else {return}
             imageView.sd_setImage(with: URL(string: url), completed: nil)
 //            guard let backImageView = user.backImageView else {return}
+            
         }
     }
 
@@ -93,6 +95,7 @@ class UserDetailViewController: UIViewController {
     
     @objc private func didTapStatusMessage() {
         let vc = StatusMessageViewController()
+        vc.statusMessage = statusMessageButton.titleLabel?.text
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)

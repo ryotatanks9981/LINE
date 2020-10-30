@@ -19,7 +19,7 @@ class TLTableViewCell: UITableViewCell {
                     break
                 }
             }
-            postTextView.text = post?.content
+            contentLabel.text = post?.content
         }
     }
     
@@ -41,12 +41,10 @@ class TLTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let postTextView: UITextView = {
-        let view = UITextView()
-        view.isSelectable = false
-        view.isEditable = false
+    private let contentLabel: UILabel = {
+        let view = UILabel()
+        view.numberOfLines = 0
         view.font = .systemFont(ofSize: 18)
-        view.text = "Hello World"
         return view
     }()
     
@@ -55,7 +53,9 @@ class TLTableViewCell: UITableViewCell {
         
         addSubview(profileImageView)
         addSubview(usernameLabel)
-        addSubview(postTextView)
+        addSubview(contentLabel)
+        
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -72,7 +72,8 @@ class TLTableViewCell: UITableViewCell {
         
         usernameLabel.frame = CGRect(x: profileImageView.right+5, y: profileImageView.bottom-30,
                                      width: contentView.width-profileImageView.right-20, height: 20)
-        postTextView.frame = CGRect(x: 5, y: profileImageView.bottom+10,
+        contentLabel.frame = CGRect(x: 5, y: profileImageView.bottom+10,
                                     width: contentView.width-10, height: contentView.height-size-20)
+        contentLabel.sizeToFit()
     }
 }

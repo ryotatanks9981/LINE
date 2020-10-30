@@ -2,6 +2,12 @@ import UIKit
 
 class StatusMessageViewController: UIViewController {
     
+    public var statusMessage: String? {
+        didSet {
+            statusMessageTextView.text = statusMessage
+        }
+    }
+    
     private let backgroundImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "userBackgroundImage")
@@ -17,14 +23,12 @@ class StatusMessageViewController: UIViewController {
         view.textColor = .white
         view.textAlignment = .center
         view.backgroundColor = .clear
+        view.font = .systemFont(ofSize: 40, weight: .bold)
         return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         view.addSubview(backgroundImageView)
         view.addSubview(statusMessageTextView)
@@ -41,6 +45,8 @@ class StatusMessageViewController: UIViewController {
     }
     
     private func createNavBarItems() {
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         let leftButton = UIBarButtonItem(image: UIImage(systemName: "multiply"),
                                          style: .done,
                                          target: self,

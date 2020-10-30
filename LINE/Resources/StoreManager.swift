@@ -38,10 +38,12 @@ class StoreManager {
         let docData: [String: Any] = [
             "username": user.username,
             "createdAt": user.createdAt,
-            "profileImageUrl": user.profileImageUrl
+            "profileImageUrl": user.profileImageUrl,
+            "backImageViewUrl": user.backImageViewUrl ?? "",
+            "statusMessage": user.statusMessage ?? "",
         ]
         
-        store.collection("users").document(user.email).setData(docData) { (error) in
+        store.collection("users").document(user.email).setData(docData, merge: true) { (error) in
             guard error == nil else {return}
         }
     }

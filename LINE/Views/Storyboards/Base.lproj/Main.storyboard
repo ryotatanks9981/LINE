@@ -146,7 +146,7 @@
         <!--ニュース-->
         <scene sceneID="yFj-hh-BjX">
             <objects>
-                <viewController id="W3E-gx-X39" customClass="NewsViewController" customModule="LINE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="W3E-gx-X39" customClass="CategoryViewController" customModule="LINE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RTQ-l9-uzO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

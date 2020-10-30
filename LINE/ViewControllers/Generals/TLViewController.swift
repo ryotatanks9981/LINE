@@ -6,7 +6,6 @@ class TLViewController: UIViewController {
     
     private let table: UITableView = {
         let view = UITableView()
-        view.separatorStyle = .none
         view.tableFooterView = UIView()
         view.register(TLTableViewCell.self, forCellReuseIdentifier: TLTableViewCell.id)
         return view
@@ -36,6 +35,8 @@ class TLViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         table.frame = view.bounds
+        table.separatorStyle = .none
+        table.rowHeight = 250
         
         createNavBarItems()
     }
@@ -72,10 +73,5 @@ extension TLViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
-    }
-    
     
 }

@@ -13,6 +13,7 @@ class ViewController: UIViewController {
                                          action: #selector(back))
         backButton.tintColor = .black
         navigationItem.leftBarButtonItem = backButton
+        navigationController?.navigationBar.barTintColor = UIColor(red: 32, green: 47, blue: 85, alpha: 1)
     }
 
     @objc private func back() {

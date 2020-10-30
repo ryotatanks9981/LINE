@@ -42,6 +42,7 @@ class SettingViewController: ViewController {
                                          action: #selector(didTapLeftButton))
         leftButton.tintColor = .black
         navigationItem.leftBarButtonItem = leftButton
+        navigationController?.navigationBar.barTintColor = UIColor(red: 32, green: 47, blue: 85, alpha: 1)
     }
     
     //objc func
@@ -75,6 +76,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             }
             break
         case .profile:
+            let vc = EditProfileViewController()
+            navigationController?.pushViewController(vc, animated: true)
             break
         }
     }

@@ -65,7 +65,14 @@ extension AddConversationViewController: UITableViewDelegate, UITableViewDataSou
         guard let email = Auth.auth().currentUser?.email else {return}
         
         let user = users[indexPath.row]
-        let conversationID = "\(email)_\(user.email)"
+        
+        var members = [email, user.email]
+        members = members.sorted { (fast, slow) -> Bool in
+            return fast < slow
+        }
+        
+        let conversationID = "\(members[0])_\(members[1])"
+        print(conversationID)
         StoreManager.shared.conversationExists(conversationID: conversationID) { (exists) in
             if !exists {
                 self.showActionSheet(email: email, user: user)

@@ -22,6 +22,7 @@ class TalkViewController: UIViewController {
         view.addSubview(table)
         table.delegate = self
         table.dataSource = self
+        table.separatorStyle = .none
     }
     
     override func viewDidLayoutSubviews() {

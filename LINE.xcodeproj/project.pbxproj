@@ -16,7 +16,7 @@
 		55780A472542890D00BA649E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A462542890D00BA649E /* HomeViewController.swift */; };
 		55780A4A25428A5F00BA649E /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A4925428A5F00BA649E /* TalkViewController.swift */; };
 		55780A4D25428A6F00BA649E /* TLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A4C25428A6F00BA649E /* TLViewController.swift */; };
-		55780A5025428A7600BA649E /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A4F25428A7600BA649E /* NewsViewController.swift */; };
+		55780A5025428A7600BA649E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A4F25428A7600BA649E /* CategoryViewController.swift */; };
 		55780A542542910000BA649E /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A532542910000BA649E /* UserInfoView.swift */; };
 		55780A57254291F600BA649E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A56254291F600BA649E /* Extension.swift */; };
 		55780A5B254314BE00BA649E /* GroupeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A5A254314BE00BA649E /* GroupeListView.swift */; };
@@ -45,6 +45,12 @@
 		55780AEC25485B5900BA649E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AEB25485B5900BA649E /* TextView.swift */; };
 		55780AEF2549667100BA649E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AEE2549667100BA649E /* Post.swift */; };
 		55780AF225496C1B00BA649E /* AddTLPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AF125496C1B00BA649E /* AddTLPostViewController.swift */; };
+		55780AF6254B986400BA649E /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AF5254B986400BA649E /* CategoryCollectionViewCell.swift */; };
+		55780AFA254BA2F800BA649E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AF9254BA2F800BA649E /* Category.swift */; };
+		55780AFD254BF21E00BA649E /* CovidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AFC254BF21E00BA649E /* CovidViewController.swift */; };
+		55780B21254C0F7B00BA649E /* CovidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780B20254C0F7B00BA649E /* CovidView.swift */; };
+		55780B44254C289300BA649E /* Covid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780B43254C289300BA649E /* Covid.swift */; };
+		55780B47254C410F00BA649E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780B46254C410F00BA649E /* EditProfileViewController.swift */; };
 		6506E15CEA82AFEDFFB76A16 /* Pods_LINE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C495372DD851BBA839C42F /* Pods_LINE.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +67,7 @@
 		55780A462542890D00BA649E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		55780A4925428A5F00BA649E /* TalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 		55780A4C25428A6F00BA649E /* TLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLViewController.swift; sourceTree = "<group>"; };
-		55780A4F25428A7600BA649E /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		55780A4F25428A7600BA649E /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		55780A532542910000BA649E /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		55780A56254291F600BA649E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		55780A5A254314BE00BA649E /* GroupeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupeListView.swift; sourceTree = "<group>"; };
@@ -90,6 +96,12 @@
 		55780AEB25485B5900BA649E /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		55780AEE2549667100BA649E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		55780AF125496C1B00BA649E /* AddTLPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTLPostViewController.swift; sourceTree = "<group>"; };
+		55780AF5254B986400BA649E /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		55780AF9254BA2F800BA649E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		55780AFC254BF21E00BA649E /* CovidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidViewController.swift; sourceTree = "<group>"; };
+		55780B20254C0F7B00BA649E /* CovidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidView.swift; sourceTree = "<group>"; };
+		55780B43254C289300BA649E /* Covid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid.swift; sourceTree = "<group>"; };
+		55780B46254C410F00BA649E /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		76D230724751C104671D2B9E /* Pods-LINE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.release.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.release.xcconfig"; sourceTree = "<group>"; };
 		CD82D98732F2C05F28300877 /* Pods-LINE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LINE.debug.xcconfig"; path = "Target Support Files/Pods-LINE/Pods-LINE.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,12 +197,12 @@
 		55780A52254290E200BA649E /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				55780B1E254C0D2500BA649E /* Cells */,
 				55780A532542910000BA649E /* UserInfoView.swift */,
 				55780A5A254314BE00BA649E /* GroupeListView.swift */,
 				55780A5F25431FD600BA649E /* FriendsListView.swift */,
 				55780AA725458CFF00BA649E /* UserTableViewCell.swift */,
-				55780AD42546ECD400BA649E /* TalkTableViewCell.swift */,
-				55780AE825485A8800BA649E /* TLTableViewCell.swift */,
+				55780B20254C0F7B00BA649E /* CovidView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -214,6 +226,8 @@
 				55780AD12545AF6000BA649E /* Conversaiton.swift */,
 				55780AE12548120600BA649E /* Setiing.swift */,
 				55780AEE2549667100BA649E /* Post.swift */,
+				55780AF9254BA2F800BA649E /* Category.swift */,
+				55780B43254C289300BA649E /* Covid.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,7 +238,7 @@
 				55780A462542890D00BA649E /* HomeViewController.swift */,
 				55780A4925428A5F00BA649E /* TalkViewController.swift */,
 				55780A4C25428A6F00BA649E /* TLViewController.swift */,
-				55780A4F25428A7600BA649E /* NewsViewController.swift */,
+				55780A4F25428A7600BA649E /* CategoryViewController.swift */,
 			);
 			path = Generals;
 			sourceTree = "<group>";
@@ -232,14 +246,34 @@
 		55780AA52545886900BA649E /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				55780B49254C413900BA649E /* Users */,
 				55780AA12545882800BA649E /* AddConversationViewController.swift */,
 				55780AC825459EBC00BA649E /* ChatViewController.swift */,
-				55780AD7254791BF00BA649E /* UserDetailViewController.swift */,
-				55780ADD2547BECD00BA649E /* SettingViewController.swift */,
-				55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */,
 				55780AF125496C1B00BA649E /* AddTLPostViewController.swift */,
+				55780AFC254BF21E00BA649E /* CovidViewController.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		55780B1E254C0D2500BA649E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				55780AD42546ECD400BA649E /* TalkTableViewCell.swift */,
+				55780AE825485A8800BA649E /* TLTableViewCell.swift */,
+				55780AF5254B986400BA649E /* CategoryCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		55780B49254C413900BA649E /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				55780ADA2547BAFB00BA649E /* StatusMessageViewController.swift */,
+				55780AD7254791BF00BA649E /* UserDetailViewController.swift */,
+				55780B46254C410F00BA649E /* EditProfileViewController.swift */,
+				55780ADD2547BECD00BA649E /* SettingViewController.swift */,
+			);
+			path = Users;
 			sourceTree = "<group>";
 		};
 		968B73775214D65CD05201D6 /* Frameworks */ = {
@@ -380,9 +414,12 @@
 				55780A57254291F600BA649E /* Extension.swift in Sources */,
 				55780AC925459EBC00BA649E /* ChatViewController.swift in Sources */,
 				55780A4D25428A6F00BA649E /* TLViewController.swift in Sources */,
+				55780B21254C0F7B00BA649E /* CovidView.swift in Sources */,
 				55780A6E2544201900BA649E /* TextField.swift in Sources */,
+				55780B47254C410F00BA649E /* EditProfileViewController.swift in Sources */,
 				55780AD52546ECD400BA649E /* TalkTableViewCell.swift in Sources */,
 				55780A9625445CCF00BA649E /* StoreManager.swift in Sources */,
+				55780B44254C289300BA649E /* Covid.swift in Sources */,
 				55780AEC25485B5900BA649E /* TextView.swift in Sources */,
 				55780A322542844100BA649E /* ViewController.swift in Sources */,
 				55780A2E2542844100BA649E /* AppDelegate.swift in Sources */,
@@ -397,12 +434,15 @@
 				55780A542542910000BA649E /* UserInfoView.swift in Sources */,
 				55780A6025431FD600BA649E /* FriendsListView.swift in Sources */,
 				55780A302542844100BA649E /* SceneDelegate.swift in Sources */,
+				55780AFA254BA2F800BA649E /* Category.swift in Sources */,
 				55780AA22545882800BA649E /* AddConversationViewController.swift in Sources */,
-				55780A5025428A7600BA649E /* NewsViewController.swift in Sources */,
+				55780A5025428A7600BA649E /* CategoryViewController.swift in Sources */,
 				55780A472542890D00BA649E /* HomeViewController.swift in Sources */,
+				55780AF6254B986400BA649E /* CategoryCollectionViewCell.swift in Sources */,
 				55780AA825458CFF00BA649E /* UserTableViewCell.swift in Sources */,
 				55780A9A2544605800BA649E /* User.swift in Sources */,
 				55780AF225496C1B00BA649E /* AddTLPostViewController.swift in Sources */,
+				55780AFD254BF21E00BA649E /* CovidViewController.swift in Sources */,
 				55780A682544039800BA649E /* RegisterViewController.swift in Sources */,
 				55780AE925485A8800BA649E /* TLTableViewCell.swift in Sources */,
 				55780ACF25459F7800BA649E /* Message.swift in Sources */,
