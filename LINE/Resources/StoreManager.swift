@@ -85,6 +85,7 @@ class StoreManager {
     //   - conversationExists
     //   - createNewConversation
     //   - getCurrentUserConversations
+    //   - deleteConversation
     
     
     //自分の会話を全て取得
@@ -161,6 +162,16 @@ class StoreManager {
                 }
             }
             completion(.success(conversations))
+        }
+    }
+    
+    //会話を削除
+    public func deleteConversation(conversatonID: String) {
+        store.collection("conversations").document(conversatonID).delete { (error) in
+            guard error == nil else {
+                print("error: ", error!)
+                return
+            }
         }
     }
     

@@ -100,6 +100,22 @@ extension TalkViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let conversationID = conversations[indexPath.row].id
+        print(conversationID)
+        StoreManager.shared.conversationExists(conversationID: conversationID) { (exist) in
+            if exist {
+                StoreManager.shared.deleteConversation(conversatonID: conversationID)
+                self.conversations.remove(at: indexPath.row)
+                self.table.reloadData()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "削除"
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
