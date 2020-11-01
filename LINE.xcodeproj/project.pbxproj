@@ -19,7 +19,6 @@
 		55780A5025428A7600BA649E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A4F25428A7600BA649E /* CategoryViewController.swift */; };
 		55780A542542910000BA649E /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A532542910000BA649E /* UserInfoView.swift */; };
 		55780A57254291F600BA649E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A56254291F600BA649E /* Extension.swift */; };
-		55780A5B254314BE00BA649E /* GroupeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A5A254314BE00BA649E /* GroupeListView.swift */; };
 		55780A6025431FD600BA649E /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A5F25431FD600BA649E /* FriendsListView.swift */; };
 		55780A652544038400BA649E /* RegisterAndLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A642544038400BA649E /* RegisterAndLoginViewController.swift */; };
 		55780A682544039800BA649E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A672544039800BA649E /* RegisterViewController.swift */; };
@@ -70,7 +69,6 @@
 		55780A4F25428A7600BA649E /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		55780A532542910000BA649E /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		55780A56254291F600BA649E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		55780A5A254314BE00BA649E /* GroupeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupeListView.swift; sourceTree = "<group>"; };
 		55780A5F25431FD600BA649E /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		55780A642544038400BA649E /* RegisterAndLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAndLoginViewController.swift; sourceTree = "<group>"; };
 		55780A672544039800BA649E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -199,9 +197,7 @@
 			children = (
 				55780B1E254C0D2500BA649E /* Cells */,
 				55780A532542910000BA649E /* UserInfoView.swift */,
-				55780A5A254314BE00BA649E /* GroupeListView.swift */,
 				55780A5F25431FD600BA649E /* FriendsListView.swift */,
-				55780AA725458CFF00BA649E /* UserTableViewCell.swift */,
 				55780B20254C0F7B00BA649E /* CovidView.swift */,
 			);
 			path = CustomViews;
@@ -260,6 +256,7 @@
 			children = (
 				55780AD42546ECD400BA649E /* TalkTableViewCell.swift */,
 				55780AE825485A8800BA649E /* TLTableViewCell.swift */,
+				55780AA725458CFF00BA649E /* UserTableViewCell.swift */,
 				55780AF5254B986400BA649E /* CategoryCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -425,7 +422,6 @@
 				55780A2E2542844100BA649E /* AppDelegate.swift in Sources */,
 				55780AEF2549667100BA649E /* Post.swift in Sources */,
 				55780AE22548120700BA649E /* Setiing.swift in Sources */,
-				55780A5B254314BE00BA649E /* GroupeListView.swift in Sources */,
 				55780A75254430F800BA649E /* BaseTabViewController.swift in Sources */,
 				55780AD8254791BF00BA649E /* UserDetailViewController.swift in Sources */,
 				55780ACC25459F4C00BA649E /* Sender.swift in Sources */,

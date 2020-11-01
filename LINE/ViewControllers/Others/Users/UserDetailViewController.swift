@@ -1,5 +1,6 @@
 import UIKit
 import SDWebImage
+import Firebase
 
 class UserDetailViewController: UIViewController {
     
@@ -88,7 +89,11 @@ class UserDetailViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftButton
     }
     
-    // objc func
+    // objc funcs
+    //   - didTapLeftButton
+    //   - didTapStatusMessage
+    //   - addFriendTapped
+    
     @objc private func didTapLeftButton() {
         dismiss(animated: true)
     }

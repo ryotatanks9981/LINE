@@ -19,6 +19,10 @@ class StoreManager {
     //   - insertUser
     //   - getCurrentUser
     //   - getAAllUser
+    //   - isFriend
+    //   - fetchFriends
+    //   - addFriend
+    //   - deleteFriend
     
     
     // ユーザーが既に存在するかどうか
@@ -80,6 +84,36 @@ class StoreManager {
         }
     }
     
+    public func fetchFriends(email: String, completion: @escaping (Result<[String], Error>) -> Void) {
+        store.collection("users").document(email).collection("friends").addSnapshotListener { (snapshots, err) in
+            guard let documents = snapshots?.documents, err == nil else {
+                completion(.failure(StoreError.fail))
+                return
+            }
+            var friends = [String]()
+            documents.forEach { (snashot) in
+                let email = snashot.documentID
+                friends.append(email)
+            }
+            
+            completion(.success(friends))
+        }
+    }
+    
+    private func addFriend(email: String, partnerEmail: String) {
+        store.collection("users").document(email).collection("friends").document(partnerEmail).setData(["email": partnerEmail]) { (error) in
+            guard error == nil else {return}
+        }
+    }
+    
+    public func deleteFriend(email: String, partnerEmail: String) {
+        store.collection("users").document(email).collection("friends").document(partnerEmail).delete { (err) in
+            guard err == nil else {return}
+        }
+    }
+    
+    
+    
     // About Conversations functions
     //   - getAllConversations
     //   - conversationExists
@@ -139,6 +173,7 @@ class StoreManager {
             guard error == nil else {
                 return
             }
+            self.addFriend(email: email, partnerEmail: partnerEmail)
         }
     }
     

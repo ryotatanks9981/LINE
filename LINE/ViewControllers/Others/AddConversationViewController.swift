@@ -78,7 +78,6 @@ extension AddConversationViewController: UITableViewDelegate, UITableViewDataSou
                 self.showActionSheet(email: email, user: user)
             } else {
                 let conversationID = UserDefaults.standard.value(forKey: "conversationID") as? String ?? ""
-                print(conversationID)
                 self.moveToChatVC(id: conversationID, email: email, partnerEmail: user.email)
             }
         }

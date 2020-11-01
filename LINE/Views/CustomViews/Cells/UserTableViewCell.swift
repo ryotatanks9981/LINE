@@ -1,8 +1,14 @@
 import UIKit
 import SDWebImage
 
+protocol UserTableViewCellDelegate: class {
+    func showDetail(user: User)
+}
+
 class UserTableViewCell: UITableViewCell {
 
+    public var delegate: UserTableViewCellDelegate?
+    
     var user: User? {
         didSet {
             guard let url = user?.profileImageUrl else {return}
@@ -18,6 +24,7 @@ class UserTableViewCell: UITableViewCell {
         view.contentMode = .scaleAspectFill
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.gray.cgColor
+        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -35,6 +42,9 @@ class UserTableViewCell: UITableViewCell {
         
         addSubview(profileImageView)
         addSubview(usernameLabel)
+        
+        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showDetail)))
+        profileImageView.isUserInteractionEnabled = true
     }
     
     required init?(coder: NSCoder) {
@@ -50,5 +60,10 @@ class UserTableViewCell: UITableViewCell {
         profileImageView.clipsToBounds = true
         
         usernameLabel.frame = CGRect(x: profileImageView.right+10, y: (contentView.height-21)/2, width: contentView.width/2, height: 21)
+    }
+    
+    @objc private func showDetail() {
+        guard let user = user else {return}
+        delegate?.showDetail(user: user)
     }
 }

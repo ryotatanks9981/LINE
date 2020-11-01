@@ -2,7 +2,13 @@ import UIKit
 import SDWebImage
 import Firebase
 
+protocol TalkTableViewCellDelegate: class {
+    func showDetail(user: User)
+}
+
 class TalkTableViewCell: UITableViewCell {
+    
+    var delegate: TalkTableViewCellDelegate?
 
     var user: User? {
         didSet {
@@ -40,7 +46,8 @@ class TalkTableViewCell: UITableViewCell {
         view.contentMode = .scaleAspectFill
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.gray.cgColor
-        view.image = UIImage(systemName: "person")
+        view.backgroundColor = .lightGray
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -78,6 +85,8 @@ class TalkTableViewCell: UITableViewCell {
         addSubview(usernameLabel)
         addSubview(latestMessageLabel)
         addSubview(dateLabel)
+        
+        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showDetail)))
     }
     
     required init?(coder: NSCoder) {
@@ -106,5 +115,10 @@ class TalkTableViewCell: UITableViewCell {
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter.string(from: date.dateValue())
+    }
+    
+    @objc private func showDetail() {
+        guard let user = user else {return}
+        delegate?.showDetail(user: user)
     }
 }
