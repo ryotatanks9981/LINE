@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5576E58C2552751900005EB1 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5576E58B2552751900005EB1 /* Media.swift */; };
 		55780A2E2542844100BA649E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A2D2542844100BA649E /* AppDelegate.swift */; };
 		55780A302542844100BA649E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A2F2542844100BA649E /* SceneDelegate.swift */; };
 		55780A322542844100BA649E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780A312542844100BA649E /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		54C495372DD851BBA839C42F /* Pods_LINE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LINE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5576E58B2552751900005EB1 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		55780A2A2542844100BA649E /* LINE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LINE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55780A2D2542844100BA649E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55780A2F2542844100BA649E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				55780AEE2549667100BA649E /* Post.swift */,
 				55780AF9254BA2F800BA649E /* Category.swift */,
 				55780B43254C289300BA649E /* Covid.swift */,
+				5576E58B2552751900005EB1 /* Media.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				55780B44254C289300BA649E /* Covid.swift in Sources */,
 				55780AEC25485B5900BA649E /* TextView.swift in Sources */,
 				55780A322542844100BA649E /* ViewController.swift in Sources */,
+				5576E58C2552751900005EB1 /* Media.swift in Sources */,
 				55780A2E2542844100BA649E /* AppDelegate.swift in Sources */,
 				55780AEF2549667100BA649E /* Post.swift in Sources */,
 				55780AE22548120700BA649E /* Setiing.swift in Sources */,
@@ -594,6 +598,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TUB7TGL6ZY;
 				INFOPLIST_FILE = LINE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -601,7 +606,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = aaa.LINE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -614,6 +619,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TUB7TGL6ZY;
 				INFOPLIST_FILE = LINE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -621,7 +627,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = aaa.LINE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

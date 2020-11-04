@@ -1,5 +1,6 @@
 import Foundation
 import Firebase
+import SDWebImage
 
 class StoreManager {
     static let shared = StoreManager()
@@ -221,37 +222,69 @@ class StoreManager {
                     completion(.failure(StoreError.fail))
                     return
                 }
-                
-                
-                
-                
+
                 var messages = [Message]()
                 
                 docs.forEach { (snap) in
                     let data = snap.data()
+                    guard let messageType = data["messageType"] as? String ?? "" else {return}
                     let sender = Sender(senderId: data["sender"] as? String ?? "",
                                         displayName: data["dispName"] as? String ?? "")
-                    let message = Message(sender: sender,
-                                          messageId: snap.documentID,
-                                          sentDate: data["date"] as? Date ?? Date(),
-                                          kind: .text(data["content"] as? String ?? ""))
-                    messages.append(message)
+                    if messageType == "text" {
+                        let message = Message(sender: sender,
+                                              messageId: snap.documentID,
+                                              sentDate: data["date"] as? Date ?? Date(),
+                                              kind: .text(data["content"] as? String ?? ""))
+                        messages.append(message)
+                    } else if messageType == "photo" {
+                        let urlString = data["imageURL"] as? String ?? ""
+                        let url = URL(string: urlString)
+                        let imageView = UIImageView()
+                        imageView.sd_setImage(with: url, completed: nil)
+                        let image = imageView.image ?? UIImage()
+                        let message = Message(sender: sender,
+                                              messageId: snap.documentID,
+                                              sentDate: data["date"] as? Date ?? Date(),
+                                              kind: .photo(Media(image: image, url: url,
+                                                                 placeholderImage: image,
+                                                                 size: CGSize(width: 150, height: 150))))
+                        messages.append(message)
+                    }
                 }
-                
                 completion(.success(messages))
             }
     }
     
     public func insertMessage(id: String, message: Message, content: String) {
-        let data: [String: Any] = [
-            "sender": message.sender.senderId,
-            "dispName": message.sender.displayName,
-            "date": message.sentDate,
-            "content": content
-        ]
-        store.collection("conversations").document(id).collection("messages").document(message.messageId).setData(data) { (err) in
-            guard err == nil else {return}
+        switch message.kind {
+        case .text(let text):
+            let data: [String: Any] = [
+                "sender": message.sender.senderId,
+                "dispName": message.sender.displayName,
+                "date": message.sentDate,
+                "content": text,
+                "messageType": "text"
+            ]
+            self.store.collection("conversations").document(id).collection("messages").document(message.messageId).setData(data) { (err) in
+                guard err == nil else {return}
+            }
+        case .attributedText(_), .video(_), .audio(_), .contact(_), .location(_), .emoji(_), .custom(_):
+            break
+        case .photo(let media):
+            let data: [String: Any] = [
+                "sender": message.sender.senderId,
+                "dispName": message.sender.displayName,
+                "date": message.sentDate,
+                "content": content,
+                "imageURL": media.url?.absoluteString ?? "",
+                "messageType": "photo"
+            ]
+            self.store.collection("conversations").document(id).collection("messages").document(message.messageId).setData(data) { (err) in
+                guard err == nil else {return}
+            }
+            break
         }
+        
         
         // conversationのlatestMessageとupdateを変える
         let updateData: [String: Any] = [

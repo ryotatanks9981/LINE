@@ -153,7 +153,7 @@ class RegisterViewController: ViewController {
                     
                     guard let image = self.profileImageView.image?.pngData() else {return}
                     let fileName = "\(email)_profile_imaege.png"
-                    StorageManager.shared.uploadImage(uploadData: image, fileName: fileName) { (result) in
+                    StorageManager.shared.uploadProfileImage(uploadData: image, fileName: fileName) { (result) in
                         switch result {
                         case .success(let url):
                             let user = User(doc: [

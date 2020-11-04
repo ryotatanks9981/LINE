@@ -120,15 +120,16 @@ class EditProfileViewController: ViewController {
         
         guard let uploadData = profileImageView.image?.pngData() else {return}
         let fileName = "\(email)_profile_imaege.png"
-        StorageManager.shared.uploadImage(uploadData: uploadData, fileName: fileName) { (result) in
+        StorageManager.shared.uploadProfileImage(uploadData: uploadData, fileName: fileName) { (result) in
             switch result {
             case .success(let urlString):
+                guard let username = self.usernameTextField.text, let statusMessage = self.statusMessageTextField.text else {return}
                 let doc: [String: Any] = [
-                    "username": user.username,
+                    "username": username,
                     "createdAt": user.createdAt,
                     "profileImageUrl": urlString,
                     "backImageViewUrl": urlString,
-                    "statusMessage": self.statusMessageTextField.text ?? "",
+                    "statusMessage": statusMessage,
                 ]
                 let updateUser = User(doc: doc, email: email)
                 

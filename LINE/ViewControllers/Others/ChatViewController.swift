@@ -39,6 +39,48 @@ class ChatViewController: MessagesViewController {
         createNavBarItems()
         getAllMessages()
         
+        setupInputButton()
+        
+    }
+    
+    private func setupInputButton() {
+        let button = InputBarButtonItem()
+        button.setSize(CGSize(width: 35, height: 35), animated: false)
+        button.setImage(UIImage(systemName: "paperclip"), for: .normal)
+        button.onTouchUpInside { (_) in
+            self.presentInputActionSheet()
+        }
+        messageInputBar.setLeftStackViewWidthConstant(to: 36, animated: false)
+        messageInputBar.setStackViewItems([button], forStack: .left, animated: false)
+    }
+    
+    private func presentInputActionSheet() {
+        let actionsheet = UIAlertController(title: "メディアの選択", message: "", preferredStyle: .actionSheet)
+        actionsheet.addAction(UIAlertAction(title: "カメラで撮影", style: .default, handler: { (_) in
+            self.camera()
+        }))
+        actionsheet.addAction(UIAlertAction(title: "写真を選択", style: .default, handler: { (_) in
+            self.photoLibrary()
+        }))
+        actionsheet.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        
+        present(actionsheet, animated: true, completion: nil)
+    }
+    
+    private func camera() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .camera
+        picker.isEditing = true
+        self.present(picker, animated: true)
+    }
+    
+    private func photoLibrary() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.isEditing = true
+        self.present(picker, animated: true)
     }
     
     private func getAllMessages() {
@@ -100,5 +142,40 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         guard let id = conversation?.id else {return}
         StoreManager.shared.insertMessage(id: id, message: message, content: text)
+    }
+}
+
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage, let uploadData = image.pngData() else {return}
+        let fileName = UUID().uuidString
+        StorageManager.shared.uploadMessagePhoto(uploadData: uploadData, fileName: fileName) { (re) in
+            switch re {
+            case .success(let urlString):
+                let uuid = UUID().uuidString
+                guard let url = URL(string: urlString) else {
+                    print("失敗しました")
+                    return
+                }
+                let message = Message(sender: self.sender,
+                                      messageId: uuid,
+                                      sentDate: Timestamp().dateValue(),
+                                      kind: .photo(Media(image: image, url: url, placeholderImage: image, size: CGSize(width: 150, height: 150))))
+                self.messages.append(message)
+                guard let id = self.conversation?.id else {return}
+                StoreManager.shared.insertMessage(id: id, message: message, content: "画像を送信しました")
+                self.messagesCollectionView.reloadData()
+                self.dismiss(animated: true, completion: nil)
+                break
+            case .failure(let error):
+                print("erorr:", error)
+                break
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }

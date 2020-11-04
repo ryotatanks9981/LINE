@@ -85,7 +85,6 @@ class HomeViewController: UIViewController {
             switch re {
             case .success(let friends):
                 friends.forEach { (email) in
-                    print(email)
                     StoreManager.shared.getCurrentUser(with: email) { (re) in
                         switch re {
                         case .success(let user):
